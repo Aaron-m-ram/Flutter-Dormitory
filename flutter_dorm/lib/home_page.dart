@@ -12,24 +12,46 @@ class HomePage extends StatelessWidget {
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
-          ),
-          onPressed: () {
-            debugPrint("You pressed maintx");
-          },
-          child: const Text('Maintenance'),
-        ),
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
+            ),
+            onPressed: () {
+              debugPrint("You pressed maintx");
+            },
+            child: Column(
+              children: const [
+                Icon(
+                  Icons.construction,
+                  size: 60,
+                ),
+                Text(
+                  'Maintenance',
+                  style: TextStyle(fontSize: 30),
+                ),
+                Text('Report a leaky faucet, broken locks, etc...'),
+              ],
+            )),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
-            //padding: const EdgeInsets.all(100.0),
-          ),
-          onPressed: () {
-            debugPrint("You pressed help");
-          },
-          child: const Text('Help'),
-        ),
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
+              //padding: const EdgeInsets.all(100.0),
+            ),
+            onPressed: () {
+              debugPrint("You pressed help");
+            },
+            child: Column(
+              children: const [
+                Icon(
+                  Icons.support_agent,
+                  size: 60,
+                ),
+                Text(
+                  'Help',
+                  style: TextStyle(fontSize: 30),
+                ),
+                Text('If you need to reach management or staff')
+              ],
+            )),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
@@ -38,8 +60,20 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             debugPrint("You pressed Resources");
           },
-          child: const Text('Resources'),
-        ), /* */
+          child: Column(
+            children: const [
+              Icon(
+                Icons.emoji_people,
+                size: 60,
+              ),
+              Text(
+                'Resources',
+                style: TextStyle(fontSize: 30),
+              ),
+              Text('Find aid for any situation'),
+            ],
+          ), /* */
+        )
       ]),
     );
   }

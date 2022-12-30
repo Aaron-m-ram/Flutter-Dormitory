@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,6 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
+    final Uri url = Uri.parse("https://google.com");
 
     return Center(
       child:
@@ -16,7 +18,8 @@ class HomePage extends StatelessWidget {
               minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
             ),
             onPressed: () {
-              debugPrint("You pressed maintx");
+              launchUrl(url);
+              //debugPrint("You pressed maintx");
             },
             child: Column(
               children: const [
@@ -36,7 +39,7 @@ class HomePage extends StatelessWidget {
               minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
               //padding: const EdgeInsets.all(100.0),
             ),
-            onPressed: () {
+            onPressed: () async {
               debugPrint("You pressed help");
             },
             child: Column(

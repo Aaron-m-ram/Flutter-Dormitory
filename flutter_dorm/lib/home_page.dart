@@ -5,26 +5,42 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
+
     return Center(
-        child: Column(children: [
-      ElevatedButton(
-        onPressed: () {
-          debugPrint("You pressed maintx");
-        },
-        child: const Text('Maintenance'),
-      ),
-      ElevatedButton(
-        onPressed: () {
-          debugPrint("You pressed help");
-        },
-        child: const Text('Help'),
-      ),
-      ElevatedButton(
-        onPressed: () {
-          debugPrint("You pressed Resources");
-        },
-        child: const Text('Resources'),
-      ),
-    ]));
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
+          ),
+          onPressed: () {
+            debugPrint("You pressed maintx");
+          },
+          child: const Text('Maintenance'),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
+            //padding: const EdgeInsets.all(100.0),
+          ),
+          onPressed: () {
+            debugPrint("You pressed help");
+          },
+          child: const Text('Help'),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
+            //padding: const EdgeInsets.all(100.0),
+          ),
+          onPressed: () {
+            debugPrint("You pressed Resources");
+          },
+          child: const Text('Resources'),
+        ), /* */
+      ]),
+    );
   }
 }

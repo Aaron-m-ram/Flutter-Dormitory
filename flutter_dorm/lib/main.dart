@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dorm/home_page.dart';
+import 'package:flutter_dorm/events_page.dart';
+import 'package:flutter_dorm/more.dart';
+import 'package:flutter_dorm/moving_out.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,15 +30,14 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentPage = 0;
-  List<Widget> pages = const [
-    /*HomePage(),*/ /*EventsPage(), MovingOutPage(), MorePage()*/
-  ];
+  List<Widget> pages = const [HomePage(), EventsPage(), MovingOut(), More()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("JBPH-H Dorms"),
       ),
+      body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
@@ -47,6 +50,7 @@ class _RootPageState extends State<RootPage> {
         onDestinationSelected: (int index) {
           setState(() {
             currentPage = index;
+            debugPrint("this is where we are at ${currentPage}");
           });
         },
         selectedIndex: currentPage,

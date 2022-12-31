@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+//import 'package:url_launcher/url_launcher_string.dart';
 
 final items = ['Facebook', 'Instagram', 'Great Life Hawaii'];
 final urlArr = [
@@ -24,12 +24,6 @@ class More extends StatelessWidget {
             Uri socialMedia = Uri.parse(urlArr[index]);
             launchUrl(socialMedia);
             //debugPrint("You pressed ${items[index]}");
-
-            // if (await canLaunchUrl(socialMedia)) {
-            //   launchUrl(socialMedia);
-            // } else {
-            //   debugPrint("it is broken!!!");
-            // }
           },
           child: Card(
             child: ListTile(
@@ -41,10 +35,10 @@ class More extends StatelessWidget {
     );
   }
 
-  String? encodeQueryParameters(Map<String, String> params) {
-    return params.entries
-        .map((MapEntry<String, String> e) =>
-            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-        .join('&');
-  }
+  // String? encodeQueryParameters(Map<String, String> params) {
+  //   return params.entries
+  //       .map((MapEntry<String, String> e) =>
+  //           '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+  //       .join('&');
+  // }
 }

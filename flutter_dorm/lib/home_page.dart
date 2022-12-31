@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_dorm/resources.dart';
+import 'package:flutter_dorm/help.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -41,6 +43,13 @@ class HomePage extends StatelessWidget {
               //padding: const EdgeInsets.all(100.0),
             ),
             onPressed: () async {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const Help();
+                  },
+                ),
+              );
               debugPrint("You pressed help");
             },
             child: Column(
@@ -62,6 +71,13 @@ class HomePage extends StatelessWidget {
             //padding: const EdgeInsets.all(100.0),
           ),
           onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return const Resources();
+                },
+              ),
+            );
             debugPrint("You pressed Resources");
           },
           child: Column(

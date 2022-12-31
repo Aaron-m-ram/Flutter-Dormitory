@@ -1,15 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-class More extends StatefulWidget {
+final items = ['Facebook', 'Instagram', 'Great Life Hawaii'];
+final urlArr = [
+  'http://facebook.com/JBPHH/about',
+  'https://instagram.com/jointbasephh',
+  'https://jbphh.greatlifehawaii.com'
+];
+
+//    fb://profile/10006465925903?wtsid=wt_0DGU4nrQZPLByNWh0
+
+class More extends StatelessWidget {
   const More({super.key});
 
   @override
-  State<More> createState() => _MoreState();
-}
-
-class _MoreState extends State<More> {
-  @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Text("MORE!!!!!!!!"));
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () async {
+            Uri socialMedia = Uri.parse(urlArr[index]);
+            launchUrl(socialMedia);
+            //debugPrint("You pressed ${items[index]}");
+
+            // if (await canLaunchUrl(socialMedia)) {
+            //   launchUrl(socialMedia);
+            // } else {
+            //   debugPrint("it is broken!!!");
+            // }
+          },
+          child: Card(
+            child: ListTile(
+              title: Text(items[index]),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  String? encodeQueryParameters(Map<String, String> params) {
+    return params.entries
+        .map((MapEntry<String, String> e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .join('&');
   }
 }

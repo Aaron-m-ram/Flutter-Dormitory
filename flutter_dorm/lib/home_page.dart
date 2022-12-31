@@ -8,7 +8,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
-    final Uri url = Uri.parse("https://google.com");
+    final Uri urlMaintx = Uri.parse(
+        "https://jbphh.greatlifehawaii.com/housing/unaccompanied-personnel/uh-maintenance-request");
 
     return Center(
       child:
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
               minimumSize: Size(deviceWidth * .85, deviceHeight * .20),
             ),
             onPressed: () {
-              launchUrl(url);
+              launchUrl(urlMaintx);
               //debugPrint("You pressed maintx");
             },
             child: Column(

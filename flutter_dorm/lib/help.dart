@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dorm/main.dart';
+import 'package:flutter_dorm/navy_dorm_choice.dart';
 
 import 'package:flutter_dorm/resources.dart';
 
@@ -30,9 +31,11 @@ class _HelpState extends State<Help> {
                 onPressed: () {
                   Navigator.pop(context, true);
                   Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RootPage()));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RootPage(),
+                    ),
+                  );
                   //debugPrint('I wanna got hooooommmmemeee');
                 },
                 icon: const Icon(Icons.home))
@@ -48,7 +51,13 @@ class _HelpState extends State<Help> {
                       minimumSize: Size(deviceWidth * .85, deviceHeight * .25),
                     ),
                     onPressed: () {
-                      //launchUrl(urlMaintx);
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const NavyChoice();
+                          },
+                        ),
+                      );
                       debugPrint("You pressed maintx");
                     },
                     child: Column(

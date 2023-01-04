@@ -50,7 +50,7 @@ class _RootPageState extends State<RootPage> {
         onDestinationSelected: (int index) {
           setState(() {
             currentPage = index;
-            debugPrint("this is where we are at ${currentPage}");
+            debugPrint("this is where we are at $currentPage");
           });
         },
         selectedIndex: currentPage,

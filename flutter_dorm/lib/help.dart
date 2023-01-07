@@ -47,31 +47,32 @@ class _HelpState extends State<Help> {
               children: [
                 const Spacer(),
                 ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(deviceWidth * .85, deviceHeight * .25),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const NavyChoice();
-                          },
-                        ),
-                      );
-                      debugPrint("You pressed maintx");
-                    },
-                    child: Column(
-                      children: const [
-                        Icon(
-                          Icons.directions_boat,
-                          size: 60,
-                        ),
-                        Text(
-                          'Navy',
-                          style: TextStyle(fontSize: 30),
-                        ),
-                      ],
-                    )),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(deviceWidth * .85, deviceHeight * .25),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return const NavyChoice();
+                        },
+                      ),
+                    );
+                    debugPrint("You pressed maintx");
+                  },
+                  child: Column(
+                    children: const [
+                      Icon(
+                        Icons.directions_boat,
+                        size: 60,
+                      ),
+                      Text(
+                        'Navy',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ],
+                  ),
+                ),
                 const Spacer(),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(

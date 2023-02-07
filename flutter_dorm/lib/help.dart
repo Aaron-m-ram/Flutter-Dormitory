@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dorm/air_force_dorm_choice.dart';
 import 'package:flutter_dorm/main.dart';
 import 'package:flutter_dorm/navy_dorm_choice.dart';
 
-import 'package:flutter_dorm/resources.dart';
+//import 'package:flutter_dorm/resources.dart';
 
 class Help extends StatefulWidget {
   const Help({super.key});
@@ -83,7 +84,7 @@ class _HelpState extends State<Help> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (BuildContext context) {
-                          return const Resources();
+                          return const AirForceChoice();
                         },
                       ),
                     );

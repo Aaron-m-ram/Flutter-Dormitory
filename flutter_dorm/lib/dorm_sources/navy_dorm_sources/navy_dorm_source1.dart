@@ -46,7 +46,9 @@ class _NavyDormSource1State extends State<NavyDormSource1> {
                   scheme: 'tel',
                   //path: '7896543211',
                   path: urlArr[index]);
-              launchUrl(launchURI);
+              print(await canLaunchUrl(launchURI));
+              launchUrl(
+                  launchURI); //need this line in order to actually launch phone number
               //debugPrint("You pressed ${items[index]}");
             },
             child: Card(

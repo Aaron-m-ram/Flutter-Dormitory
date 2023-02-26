@@ -36,7 +36,7 @@ class _MovingOutState extends State<MovingOut> {
                   'Off Base Housing',
                   style: TextStyle(fontSize: 30),
                 ),
-                Text('If you want to experience Hawaiian living'),
+                Text('If you want to experience hawaiian living'),
               ],
             )),
         ElevatedButton(
@@ -54,7 +54,7 @@ class _MovingOutState extends State<MovingOut> {
                   'On Base Housing',
                   style: TextStyle(fontSize: 30),
                 ),
-                Text("Experience life in the base's amazing communities")
+                Text("Experience life in the base's communities")
               ],
             )),
         ElevatedButton(

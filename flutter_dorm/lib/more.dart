@@ -8,6 +8,7 @@ final urlArr = [
   'http://facebook.com/JBPHH/about',
   'https://instagram.com/jointbasephh',
   'https://jbphh.greatlifehawaii.com',
+  'https://ice.disa.mil/index.cfm?fa=card&sp=143563&s=1008&dep=*DoD&sc=8'
   //const Survey()
 ];
 
@@ -23,19 +24,22 @@ class More extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () async {
-            if (index != 3) {
-              Uri socialMedia = Uri.parse(urlArr[index]);
-              launchUrl(socialMedia);
-              debugPrint("You pressed ${items[index]}");
-            } else {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return const Survey();
-                  },
-                ),
-              );
-            }
+            // if (index != 3) {
+            //   Uri socialMedia = Uri.parse(urlArr[index]);
+            //   launchUrl(socialMedia);
+            //   debugPrint("You pressed ${items[index]}");
+            // } else {
+            //   Navigator.of(context).push(
+            //     MaterialPageRoute(
+            //       builder: (BuildContext context) {
+            //         return const Survey();
+            //       },
+            //     ),
+            //   );
+            // }
+            Uri socialMedia = Uri.parse(urlArr[index]);
+            launchUrl(socialMedia);
+            debugPrint("You pressed ${items[index]}");
             debugPrint("You pressed help");
           },
           child: Card(

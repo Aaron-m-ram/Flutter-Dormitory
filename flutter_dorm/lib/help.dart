@@ -19,7 +19,7 @@ class _HelpState extends State<Help> {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
-          title: const Text("who owns the dorm"),
+          title: const Text("which dorm are you in?"),
           automaticallyImplyLeading: false,
           leading: IconButton(
             onPressed: () {

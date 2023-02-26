@@ -35,7 +35,7 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("JBPH-H Dorms"),
+        title: const Text("JBPH-H Dorms/Barracks"),
       ),
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(

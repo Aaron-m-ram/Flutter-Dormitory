@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_dorm/resources.dart';
 import 'package:flutter_dorm/help.dart';
+import 'package:flutter_dorm/complex_housing.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -46,7 +47,8 @@ class HomePage extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const Help();
+                    return const ComplexHousing();
+                    //return const Help();
                   },
                 ),
               );

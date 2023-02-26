@@ -2,34 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dorm/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-final items = [
-  'SAPR',
-  'Military Family Support Center',
-  'Chaplain',
-  'Hale Aina DFAC',
-  'Silver Dolphin Bistro'
+final nameArr = [
+  'Please Contact your Command \n or \n Press this button to contact \nUnaccompanied Housing Management',
 ];
-final urlArr = [
-  'https://www.15wing.af.mil/UNITS/15th-Wing-SAPR/',
-  'https://jbphh.greatlifehawaii.com/support/military-family-support-center',
-  'https://jbchapel.info/',
-  'https://jbphh.greatlifehawaii.com/dining-retail/galleys/hale-aina-dining-facility',
-  'https://jbphh.greatlifehawaii.com/dining-retail/galleys/silver-dolphin-bistro-galley'
-];
+final urlArr = ['9876543210', ''];
 
-class Resources extends StatefulWidget {
-  const Resources({super.key});
+class IssueResolution extends StatelessWidget {
+  const IssueResolution({super.key});
 
-  @override
-  State<Resources> createState() => _ResourcesState();
-}
-
-class _ResourcesState extends State<Resources> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Resources'),
+        title: const Text('Issue Resolution'),
         automaticallyImplyLeading: false, //
         leading: IconButton(
           onPressed: () {
@@ -49,17 +34,28 @@ class _ResourcesState extends State<Resources> {
         ],
       ),
       body: ListView.builder(
-        itemCount: items.length,
+        itemCount: nameArr.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () async {
-              Uri resourcesList = Uri.parse(urlArr[index]);
-              launchUrl(resourcesList);
+              //Uri resourcesList = Uri.parse(urlArr[index]);
+              Uri launchURI = Uri(
+                  scheme: 'tel',
+                  //path: '7896543211',
+                  path: urlArr[index]);
+              //print(await canLaunchUrl(launchURI));
+              launchUrl(
+                  launchURI); //need this line in order to actually launch phone number
               //debugPrint("You pressed ${items[index]}");
             },
             child: Card(
               child: ListTile(
-                title: Text(items[index]),
+                title: Center(
+                  child: Text(
+                    nameArr[index],
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             ),
           );

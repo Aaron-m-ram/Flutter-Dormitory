@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dorm/issue_res.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:url_launcher/url_launcher_string.dart';
-import 'package:flutter_dorm/survey.dart';
+//import 'package:flutter_dorm/survey.dart';
 
-final items = ['Facebook', 'Instagram', 'Great Life Hawaii', 'Survey'];
+final items = [
+  'Facebook',
+  'Instagram',
+  'Great Life Hawaii',
+  'Survey',
+  'Still have a question?'
+];
 final urlArr = [
   'http://facebook.com/JBPHH/about',
   'https://instagram.com/jointbasephh',
   'https://jbphh.greatlifehawaii.com',
-  'https://ice.disa.mil/index.cfm?fa=card&sp=143563&s=1008&dep=*DoD&sc=8'
-  //const Survey()
+  'https://ice.disa.mil/index.cfm?fa=card&sp=143563&s=1008&dep=*DoD&sc=8',
+  //const IssueResolution()
 ];
 
 //    fb://profile/10006465925903?wtsid=wt_0DGU4nrQZPLByNWh0
@@ -24,22 +31,22 @@ class More extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () async {
-            // if (index != 3) {
-            //   Uri socialMedia = Uri.parse(urlArr[index]);
-            //   launchUrl(socialMedia);
-            //   debugPrint("You pressed ${items[index]}");
-            // } else {
-            //   Navigator.of(context).push(
-            //     MaterialPageRoute(
-            //       builder: (BuildContext context) {
-            //         return const Survey();
-            //       },
-            //     ),
-            //   );
-            // }
-            Uri socialMedia = Uri.parse(urlArr[index]);
-            launchUrl(socialMedia);
-            debugPrint("You pressed ${items[index]}");
+            if (index != 4) {
+              Uri socialMedia = Uri.parse(urlArr[index]);
+              launchUrl(socialMedia);
+              debugPrint("You pressed ${items[index]}");
+            } else {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const IssueResolution();
+                  },
+                ),
+              );
+            }
+            // Uri socialMedia = Uri.parse(urlArr[index]);
+            // launchUrl(socialMedia);
+            // debugPrint("You pressed ${items[index]}");
             debugPrint("You pressed help");
           },
           child: Card(

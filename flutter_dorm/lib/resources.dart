@@ -11,10 +11,10 @@ final items = [
 ];
 final urlArr = [
   'https://www.15wing.af.mil/UNITS/15th-Wing-SAPR/',
-  'https://jbphh.greatlifehawaii.com/support/military-family-support-center',
+  'https://jbphh.greatlifehawaii.com/support/military-family-support-center#:~:text=the%20military%20and%20family%20support%20center',
   'https://jbchapel.info/',
-  'https://jbphh.greatlifehawaii.com/dining-retail/galleys/hale-aina-dining-facility',
-  'https://jbphh.greatlifehawaii.com/dining-retail/galleys/silver-dolphin-bistro-galley'
+  'https://jbphh.greatlifehawaii.com/dining-retail/galleys/hale-aina-dining-facility#:~:text=members%20authorized%20to%20eat%20at%20the%20hale%20aina',
+  'https://jbphh.greatlifehawaii.com/dining-retail/galleys/silver-dolphin-bistro-galley#:~:text=members%20authorized%20to%20eat%20at%20the%20silver%20dolphin%20bistro%3A'
 ];
 
 class Resources extends StatefulWidget {

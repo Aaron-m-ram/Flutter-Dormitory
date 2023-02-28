@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
     final Uri urlMaintx = Uri.parse(
-        "https://jbphh.greatlifehawaii.com/housing/unaccompanied-personnel/uh-maintenance-request");
+        "https://jbphh.greatlifehawaii.com/housing/unaccompanied-personnel/uh-maintenance-request#:~:text=submit%20maintenance%20request%2C-,instead,-CONTACT%20the%20following");
 
     return Center(
       child:

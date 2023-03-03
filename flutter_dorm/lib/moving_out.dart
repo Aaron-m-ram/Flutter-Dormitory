@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dorm/hickam_hunt.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MovingOut extends StatefulWidget {
@@ -45,8 +46,14 @@ class _MovingOutState extends State<MovingOut> {
               //padding: const EdgeInsets.all(100.0),
             ),
             onPressed: () {
-              launchUrl(urlOnBase);
-              //debugPrint("You pressed on base");
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const HickamHunt();
+                  },
+                ),
+              );
+              debugPrint("You pressed Resources");
             },
             child: Column(
               children: const [
@@ -72,7 +79,7 @@ class _MovingOutState extends State<MovingOut> {
                 'BAH Calculator',
                 style: TextStyle(fontSize: 30),
               ),
-              Text('Know how much money you get to live in Hawaii'),
+              Text('Know how much money for Hawaii'),
             ],
           ), /* */
         )

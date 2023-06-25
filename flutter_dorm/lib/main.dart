@@ -35,7 +35,18 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("JBPH-H Dorms/Barracks"),
+        //title: const Text("JBPH-H Unaccompanied Housing"),
+
+        title: Row(
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            const Text("JBPH-H Unaccompanied Housing"),
+            const Spacer(),
+            Image.asset(
+                "assets/images/JBPHH_logo_Upscaled-removebg-preview.png",
+                width: 55),
+          ],
+        ),
       ),
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(

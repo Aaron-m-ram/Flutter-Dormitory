@@ -3,9 +3,11 @@ import 'package:flutter_dorm/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final nameArr = [
-  'Please Contact your Command \n or \n Press this button to contact \nUnaccompanied Housing Management',
+  'Press to contact \nUnaccompanied Housing Management',
+  'Email Unaccompanied Housing at: \n JBPHH.UH@fakeEmail.com',
+  "Please Contact your Command"
 ];
-final urlArr = ['9876543210', ''];
+final urlArr = ['9876543210', '', '9154977688'];
 
 class IssueResolution extends StatelessWidget {
   const IssueResolution({super.key});
@@ -39,14 +41,16 @@ class IssueResolution extends StatelessWidget {
           return GestureDetector(
             onTap: () async {
               //Uri resourcesList = Uri.parse(urlArr[index]);
-              Uri launchURI = Uri(
-                  scheme: 'tel',
-                  //path: '7896543211',
-                  path: urlArr[index]);
-              //print(await canLaunchUrl(launchURI));
-              launchUrl(
-                  launchURI); //need this line in order to actually launch phone number
-              //debugPrint("You pressed ${items[index]}");
+              if (index == 0) {
+                Uri launchURI = Uri(
+                    scheme: 'tel',
+                    //path: '7896543211',
+                    path: urlArr[index]);
+                //print(await canLaunchUrl(launchURI));
+                launchUrl(
+                    launchURI); //need this line in order to actually launch phone number
+                //debugPrint("You pressed ${items[index]}");
+              }
             },
             child: Card(
               child: ListTile(

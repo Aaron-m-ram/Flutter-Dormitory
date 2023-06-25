@@ -6,9 +6,16 @@ final nameArr = [
   'Press to contact \nUnaccompanied Housing Management',
   'Email Unaccompanied Housing at: \n JBPHH.UH@fakeEmail.com',
   "Please Contact your Command",
+  "UH Handbook",
   "Have a sugestion? \nPlease Email UH.Suggestion@fakeEmail.com"
 ];
-final urlArr = ['9876543210', '', '9154977688', ''];
+final urlArr = [
+  '9876543210',
+  '',
+  '9154977688',
+  'https://96f32fff-8d95-47fa-bbab-f82516f9fa7f.filesusr.com/ugd/d07603_5ed0377626c94d499e068f1dc13af740.pdf'
+      ''
+];
 
 class IssueResolution extends StatelessWidget {
   const IssueResolution({super.key});
@@ -51,6 +58,13 @@ class IssueResolution extends StatelessWidget {
                 launchUrl(
                     launchURI); //need this line in order to actually launch phone number
                 //debugPrint("You pressed ${items[index]}");
+              }
+              if (index == 3) {
+                debugPrint("UH HANDBOOK!!!!");
+                Uri handbook = Uri.parse(
+                    "https://96f32fff-8d95-47fa-bbab-f82516f9fa7f.filesusr.com/ugd/d07603_5ed0377626c94d499e068f1dc13af740.pdf");
+                //Uri handbook = Uri.parse(urlArr[index]);
+                launchUrl(handbook);
               }
             },
             child: Card(

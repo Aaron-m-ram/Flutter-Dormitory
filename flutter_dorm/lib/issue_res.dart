@@ -5,9 +5,10 @@ import 'package:url_launcher/url_launcher.dart';
 final nameArr = [
   'Press to contact \nUnaccompanied Housing Management',
   'Email Unaccompanied Housing at: \n JBPHH.UH@fakeEmail.com',
-  "Please Contact your Command"
+  "Please Contact your Command",
+  "Have a sugestion? \nPlease Email UH.Suggestion@fakeEmail.com"
 ];
-final urlArr = ['9876543210', '', '9154977688'];
+final urlArr = ['9876543210', '', '9154977688', ''];
 
 class IssueResolution extends StatelessWidget {
   const IssueResolution({super.key});

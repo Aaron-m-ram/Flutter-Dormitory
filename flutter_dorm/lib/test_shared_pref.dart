@@ -14,15 +14,14 @@ class _TestSharedPrefState extends State<TestSharedPref> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: UserSimplePreferences.getTestGlobalList()!.length,
+        itemCount: UserSimplePreferences.getTest()!.length,
         itemBuilder: (context, index) {
           return Center(
             child: Card(
               child: ListTile(
                   //title: Text(items[index]),
                   //title: Text(globals.globalHTMLList[index]),
-                  title:
-                      Text(UserSimplePreferences.getTestGlobalList()![index])),
+                  title: Text(UserSimplePreferences.getTest()![index])),
             ),
           );
         },

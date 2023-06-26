@@ -4,9 +4,10 @@ import 'package:flutter_dorm/events_page.dart';
 import 'package:flutter_dorm/more.dart';
 import 'package:flutter_dorm/moving_out.dart';
 import 'package:http/http.dart' as http;
-import 'global_variable.dart' as globals;
+//import 'global_variable.dart' as globals;
 import 'package:html/parser.dart';
 import 'package:flutter_dorm/user_simple_pref.dart';
+import 'dart:async';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,15 +29,23 @@ class _MyAppState extends State<MyApp> {
   String name = '';
   List<String> pets = [];
   List<String> test = [];
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
 
-    name = UserSimplePreferences.getUserName() ?? '';
     pets = UserSimplePreferences.getGlobalList() ?? [];
-    test = UserSimplePreferences.getTestGlobalList() ?? [];
+    test = UserSimplePreferences.getTest() ?? [];
+
+    //timer = Timer.periodic(const Duration(seconds: 15), (Timer t) => testTemer());
+    timer =
+        Timer.periodic(const Duration(seconds: 60), (Timer t) => testRequest());
   }
+
+  // void testTemer() {
+  //   debugPrint("Timer has pass 15 seconds");
+  // }
 
   void makeRequest() async {
     List<String> webList = [];
@@ -59,9 +68,12 @@ class _MyAppState extends State<MyApp> {
 
       await UserSimplePreferences.setGlobalList(webList);
     }
-    /***********************************************************************/
-    //await UserSimplePreferences.setUserName(variableName);
-    List<String> testArrList = [];
+  }
+  /***********************************************************************/
+
+  void testRequest() async {
+    List<String> newArrList = [];
+    List<String> oldArrList = [];
     Uri testWebsite = Uri.parse("https://uwqremumwrxfxlxeon.wixsite.com/test");
     var testResponse = await http.get(testWebsite);
 
@@ -74,8 +86,14 @@ class _MyAppState extends State<MyApp> {
         var testTagChild = testDocument.getElementsByTagName('h1')[i];
         var testTagText = testTagChild.text;
         //debugPrint(testTagText);
-        testArrList.add(testTagText);
+        newArrList.add(testTagText);
       }
+
+      if (newArrList != oldArrList) {
+        oldArrList = newArrList;
+        debugPrint("The Arrays are different!");
+      }
+
       /*
         In this section you will compare the test ArrList to the previous globalList
         If they are the same do nothing
@@ -87,7 +105,7 @@ class _MyAppState extends State<MyApp> {
         next it will compare
       */
 
-      await UserSimplePreferences.setTestGlobalList(testArrList);
+      await UserSimplePreferences.setTest(newArrList);
 
       /*************************************************************************/
 
@@ -97,6 +115,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     makeRequest();
+    testRequest();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),

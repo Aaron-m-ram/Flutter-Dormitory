@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dorm/issue_res.dart';
+//import 'package:flutter_dorm/issue_res.dart';
+import 'package:flutter_dorm/test_shared_pref.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:url_launcher/url_launcher_string.dart';
 //import 'package:flutter_dorm/survey.dart';
@@ -9,7 +10,8 @@ final items = [
   'Instagram',
   'Great Life Hawaii',
   'Survey',
-  'Still have a question?'
+  //'Still have a question?'
+  'Test Page'
 ];
 final urlArr = [
   'http://facebook.com/JBPHH/about',
@@ -39,7 +41,8 @@ class More extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const IssueResolution();
+                    //return const IssueResolution();
+                    return const TestSharedPref();
                   },
                 ),
               );

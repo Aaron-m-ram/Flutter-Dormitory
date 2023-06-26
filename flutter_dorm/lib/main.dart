@@ -6,41 +6,91 @@ import 'package:flutter_dorm/moving_out.dart';
 import 'package:http/http.dart' as http;
 import 'global_variable.dart' as globals;
 import 'package:html/parser.dart';
+import 'package:flutter_dorm/user_simple_pref.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserSimplePreferences.init();
+
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+//class MyApp extends StatelessWidget {
+  //const MyApp({super.key});
+  String name = '';
+  List<String> pets = [];
+  List<String> test = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    name = UserSimplePreferences.getUserName() ?? '';
+    pets = UserSimplePreferences.getGlobalList() ?? [];
+    test = UserSimplePreferences.getTestGlobalList() ?? [];
+  }
+
   void makeRequest() async {
+    List<String> webList = [];
     Uri website = Uri.parse("https://jbphh.greatlifehawaii.com");
     var response = await http.get(website);
     //If the http request is successful the statusCode will be 200
     if (response.statusCode == 200) {
       String htmlToParse = response.body;
-      globals.globalHTML = htmlToParse;
-      //debugPrint("GlobalHTML: \n\n\n ");
-      //debugPrint(globals.globalHTML);
-      var document = parse(globals.globalHTML);
+      //globals.globalHTML = htmlToParse;
+      var document = parse(htmlToParse);
       var tagParsed = document.getElementsByTagName('h3');
-
-      debugPrint("StringList \n $tagParsed");
-      //debugPrint("Stringid \n $idParsed");
-      var tagChild0 = document.getElementsByTagName('h3')[0].children[0];
-      debugPrint("tagChild0: \n $tagChild0");
-      var tagChild0Text = tagChild0.text;
-      debugPrint("tagChildText0: \n $tagChild0Text");
-      globals.globalStringListH3 = tagChild0Text;
-      debugPrint('globals TagChild H3 Text');
-      debugPrint(globals.globalStringListH3);
 
       for (var i = 0; i < tagParsed.length; i++) {
         var tagChild = document.getElementsByTagName('h3')[i].children[0];
         var tagChildtext = tagChild.text;
-        globals.globalHTMLList.add(tagChildtext);
+        debugPrint(tagChildtext);
+        //globals.globalHTMLList.add(tagChildtext);
+        webList.add(tagChildtext);
       }
+
+      await UserSimplePreferences.setGlobalList(webList);
+    }
+    /***********************************************************************/
+    //await UserSimplePreferences.setUserName(variableName);
+    List<String> testArrList = [];
+    Uri testWebsite = Uri.parse("https://uwqremumwrxfxlxeon.wixsite.com/test");
+    var testResponse = await http.get(testWebsite);
+
+    if (testResponse.statusCode == 200) {
+      String testToParse = testResponse.body;
+      var testDocument = parse(testToParse);
+      var testTag = testDocument.getElementsByTagName('h1');
+
+      for (var i = 0; i < testTag.length; i++) {
+        var testTagChild = testDocument.getElementsByTagName('h1')[i];
+        var testTagText = testTagChild.text;
+        //debugPrint(testTagText);
+        testArrList.add(testTagText);
+      }
+      /*
+        In this section you will compare the test ArrList to the previous globalList
+        If they are the same do nothing
+        If they are different up date the list
+
+        The text below can be a new function
+        next we need to do a persistent timer
+        The timer will countdown 24 hours and pull the new list
+        next it will compare
+      */
+
+      await UserSimplePreferences.setTestGlobalList(testArrList);
+
+      /*************************************************************************/
+
     }
   }
 

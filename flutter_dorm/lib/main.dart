@@ -8,6 +8,12 @@ import 'package:http/http.dart' as http;
 import 'package:html/parser.dart';
 import 'package:flutter_dorm/user_simple_pref.dart';
 import 'dart:async';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'noti.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +40,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    Noti.initialize(flutterLocalNotificationsPlugin);
 
     pets = UserSimplePreferences.getGlobalList() ?? [];
     test = UserSimplePreferences.getTest() ?? [];
@@ -99,6 +106,11 @@ class _MyAppState extends State<MyApp> {
       if (newArrList != oldArrList) {
         oldArrList = newArrList;
         debugPrint("The Arrays are different!");
+
+        Noti.showBigTextNotification(
+            title: "New Events!",
+            body: "There are new events happening at JBPH-H",
+            fln: flutterLocalNotificationsPlugin);
       }
 
       /*

@@ -9,8 +9,8 @@ import 'package:html/parser.dart';
 import 'package:flutter_dorm/user_simple_pref.dart';
 import 'dart:async';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
 import 'noti.dart';
+import 'package:collection/collection.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -37,6 +37,10 @@ class _MyAppState extends State<MyApp> {
   List<String> test = [];
   Timer? timer;
 
+  List<String> newArrList = [];
+  List<String> oldArrList = [];
+  int counter = 0;
+
   @override
   void initState() {
     super.initState();
@@ -47,7 +51,7 @@ class _MyAppState extends State<MyApp> {
 
     //timer = Timer.periodic(const Duration(seconds: 15), (Timer t) => testTemer());
     timer =
-        Timer.periodic(const Duration(seconds: 60), (Timer t) => testRequest());
+        Timer.periodic(const Duration(seconds: 15), (Timer t) => testRequest());
   }
 
   // void testTemer() {
@@ -86,8 +90,6 @@ class _MyAppState extends State<MyApp> {
   Account pass: need the @
    */
   void testRequest() async {
-    List<String> newArrList = [];
-    List<String> oldArrList = [];
     Uri testWebsite = Uri.parse("https://uwqremumwrxfxlxeon.wixsite.com/test");
     var testResponse = await http.get(testWebsite);
 
@@ -103,28 +105,42 @@ class _MyAppState extends State<MyApp> {
         newArrList.add(testTagText);
       }
 
-      if (newArrList != oldArrList) {
+      Function equality = const DeepCollectionEquality().equals;
+
+      // ignore: avoid_print
+      print("new $newArrList");
+      // ignore: avoid_print
+      print("old $oldArrList");
+      // ignore: avoid_print
+      print(equality(newArrList, oldArrList));
+
+      // ignore: avoid_print
+      print("Counber before IF: $counter");
+
+      //if (newArrList != oldArrList) {
+      if (!equality(newArrList, oldArrList)) {
+        await UserSimplePreferences.setTest(newArrList);
         oldArrList = newArrList;
         debugPrint("The Arrays are different!");
 
-        Noti.showBigTextNotification(
-            title: "New Events!",
-            body: "There are new events happening at JBPH-H",
-            fln: flutterLocalNotificationsPlugin);
+        if (counter != 0) {
+          Noti.showBigTextNotification(
+              title: "New Events!",
+              body: "There are new events happening at JBPH-H",
+              fln: flutterLocalNotificationsPlugin);
+        }
       }
+      if (counter >= 10) {
+        counter = 1;
+      }
+      counter = counter + 1;
+      newArrList = [];
 
       /*
         In this section you will compare the test ArrList to the previous globalList
         If they are the same do nothing
         If they are different up date the list
-
-        The text below can be a new function
-        next we need to do a persistent timer
-        The timer will countdown 24 hours and pull the new list
-        next it will compare
       */
-
-      await UserSimplePreferences.setTest(newArrList);
 
       /*************************************************************************/
 
